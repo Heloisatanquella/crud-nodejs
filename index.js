@@ -17,7 +17,7 @@ server.get('/cursos', (req, res) => {
 });
 
 server.post('/cursos', (req, res) => {
-    const {name} = res.body
+    const {name} = req.body
     cursos.push(name);
     
     return res.json(cursos)
@@ -39,4 +39,4 @@ server.delete('/cursos/:index', (req, res) => {
     return res.json({ message: "o curso foi deletado"})
 });
 
-server.listen(3001);
+server.listen(3000);
