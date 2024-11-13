@@ -1,8 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 
 const server = express();
 
 server.use(express.json());
+server.use(cors({
+    origin: '*'
+  }));
 
 const cursos = ['FullStack Master', 'Desenvolvimento de Games', 'Viver de Código', 'Golang do zero ao avançado'];
 
@@ -39,4 +43,9 @@ server.delete('/cursos/:index', (req, res) => {
     return res.json({ message: "o curso foi deletado"})
 });
 
-server.listen(3000);
+const setup = () => {
+    server.listen(3000);
+    console.log('App run')
+}
+
+setup();
