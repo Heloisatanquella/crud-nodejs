@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # Serviço para o back-end
+  backend:
+    build:
+      context: ./backend  # Caminho do diretório do back-end
+    ports:
+      - "3001:3000"  # Porta exposta do back-end
+    networks:
+      - app-network  # Usando a mesma rede que o front-end
+
+  # Serviço para o front-end
+  frontend:
+    build:
+      context: ./frontend  # Caminho do diretório do front-end
+    ports:
+      - "8080:80"  # Porta exposta do front-end
+    depends_on:
+      - backend  # Espera o back-end estar pronto
+    networks:
+      - app-network  # Usando a mesma rede que o back-end
+
+networks:
+  app-network:
+    driver: bridge  # Rede de ponte para comunicação entre containers

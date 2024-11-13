@@ -1,0 +1,11 @@
+# Etapa 1: Usar a imagem oficial do Nginx
+FROM nginx:alpine
+
+# Etapa 2: Copiar os arquivos da aplicação para o diretório de conteúdo do Nginx
+COPY . /usr/share/nginx/html
+
+# Etapa 3: Expor a porta 80 para acessar o conteúdo
+EXPOSE 80
+
+# O Nginx será executado automaticamente quando o container iniciar
+CMD ["nginx", "-g", "daemon off;"]

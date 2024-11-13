@@ -1,0 +1,18 @@
+# Usar uma imagem oficial do Node.js
+FROM node:16
+
+# Criar e definir o diretório de trabalho dentro do container
+WORKDIR /usr/src/app
+
+# Copiar os arquivos do projeto para o diretório do container
+COPY package*.json ./
+COPY server.js ./
+
+# Instalar as dependências do projeto
+RUN npm install
+
+# Expor a porta 3000 (a porta onde o servidor estará rodando)
+EXPOSE 3000
+
+# Iniciar o servidor Express
+CMD ["node", "server.js"]
